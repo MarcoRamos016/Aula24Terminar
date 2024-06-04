@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="background">
+        <video muted autoplay loop>
+            <source src="/Ativ24/Video/1118666_4k_Mystery_Astronomy_1920x1080.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div id="navbar">
+        <ul>
+            <li>
+                <a href="/Ativ24/Index/principal.html">Inicio</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="contform">
+        <form id="contform">
+            <li>
+                <label>Cpf</label>
+                <br>
+                <input type="number" name="cpf" id="cpf" required>
+            </li>
+            <li>
+                <label>Id</label>
+                <br>
+                <input type="text" name="id" id="id"  required>
+            </li>
+            <li>
+                <label>Nome</label>
+                <br>
+                <input type="text" name="nome" id="nome"  required>
+            </li>
+            <li>
+                <label>Telefone</label>
+                <br>
+                <input type="text" name="telefone" id="telefone"  required>
+            </li>
+            <li>
+                <label>Cidade</label>
+                <br>
+                <input type="text" name="cidade" id="cidade"  required>
+            </li>
+            <button id="confirm">CADASTRAR</button>
+        </form>
+    </div>
+    <div>
+        <table id="dataTable">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nome</th>
+                    <th>Telefone</th>
+                    <th>Cpf</th>
+                    <th>Cidade</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        
+    </div>
+
+</body>
+
+        
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // capturar referencia do conteudo da tabela 
+      var tableBody = document.querySelector("#dataTable tbody");
+  
+  
+      for (var i = 0; i < sessionStorage.length; i++) {
+          
+          if (sessionStorage.key(i) == "produtos"){
+  
+              var key = sessionStorage.key(i);
+              var value = JSON.parse(sessionStorage.getItem(key));
+  
+              for(var j = 0; j <= value.length; j++){
+                  
+                  var objeto = value[j];
+  
+                  console.log(objeto);
+  
+                   // Criar um linha
+                   var newRow = document.createElement("tr");
+                   // criar tres celulas
+                   var id = document.createElement("td");
+                   var nome = document.createElement("td");
+                   var telefone = document.createElement("td");
+                   var cpf = document.createElement("td");
+                   var cidade = document.createElement("td");
+                  
+                   id.textContent = objeto.id;
+                   nome.textContent = objeto.nome;
+                   telefone.textContent = objeto.telefone;
+                   cpf.textContent = objeto.cpf;
+                   cidade.textContent = objeto.cidade;
+
+           
+                   // Add dados na linha
+                   newRow.appendChild(id);
+                   newRow.appendChild(nome);
+                   newRow.appendChild(telefone);
+                   newRow.appendChild(cpf);
+                   newRow.appendChild(cidade);
+           
+                   // ADD linha na tabela
+                   tableBody.appendChild(newRow);
+  
+              } 
+          }
+      }
+  });
+  
+      
+  </script>
+
+  <script src="script.js"></script>
+</html>
